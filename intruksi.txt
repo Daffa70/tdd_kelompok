@@ -1,0 +1,79 @@
+1. /auth/register [POST]
+    Test case 1 (Positif) :
+        Mendaftarkan user dengan email yang belum terdaftar.
+
+        Ekspetasi :
+        - status code : 201
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.data memiliki properti : id
+        - res.body.data memiliki properti : name
+        - res.body.data memiliki properti : email
+        - res.body.status : true
+        - res.body.message : "user created!"
+    
+    Test case 2 (Negatif):
+        Mendaftarkan user dengan email yang sudah terdaftar.
+
+        Ekspetasi :
+        - status code : 400
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.status : false
+        - res.body.message : "email already used!"
+
+
+
+2. /auth/login [POST]
+    Test case 1 (Positif) :
+        Login dengan email dan password yang benar.
+
+        Ekspetasi :
+        - status code : 200
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.data memiliki properti : token
+        - res.body.status : true
+        - res.body.message : "login success!"
+    
+    Test case 2 (Negatif):
+        Login dengan email dan password yang salah.
+
+        Ekspetasi :
+        - status code : 400
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.status : false
+        - res.body.message : "credential is not valid!"
+
+
+
+3. /auth/whoami [GET]
+    Test case 1 (Positif) :
+        Akses dengan mengirimkan token didalam header.
+
+        Ekspetasi :
+        - status code : 200
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.data memiliki properti : id
+        - res.body.data memiliki properti : name
+        - res.body.data memiliki properti : email
+        - res.body.status : true
+        - res.body.message : "fetch user success!"
+    
+    Test case 2 (Negatif):
+        Akses dengan tidak mengirimkan token didalam header.
+
+        Ekspetasi :
+        - status code : 401
+        - res.body memiliki properti : status
+        - res.body memiliki properti : message
+        - res.body memiliki properti : data
+        - res.body.status : false
+        - res.body.message : "you're not authorized!"
