@@ -23,11 +23,10 @@ module.exports = {
                 name, email, password: hashPassword
             });
 
-            return res.status(200).json({
+            return res.status(201).json({
                 status: true,
-                message: 'user registered!',
+                message: 'user created!',
                 data: {
-                    id: user.id,
                     name: user.name,
                     email: user.email
                 }

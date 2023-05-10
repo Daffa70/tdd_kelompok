@@ -26,3 +26,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(HTTP_PORT, () => console.log('running on port', HTTP_PORT));
+
+module.exports = app
