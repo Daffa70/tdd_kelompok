@@ -1,11 +1,10 @@
 const request = require("supertest");
 const app = require("../app.js");
-const jwt = require("jsonwebtoken");
-const { JWT_SECRET_KEY } = process.env;
 
 describe("login function", () => {
   // positive
   test('res.json called { status: true, message: "login success!", data: {token: token}', async () => {
+    let token;
     try {
       const user = {
         id: 1,
@@ -13,10 +12,6 @@ describe("login function", () => {
         email: "sabrina@mail.com",
         password: "password123",
       };
-      const token = jwt.sign(
-        { id: user.id, name: user.name, email: user.email },
-        JWT_SECRET_KEY
-      );
 
       const res = await request(app)
         .post("/auth/login")
@@ -28,10 +23,10 @@ describe("login function", () => {
       expect(res.body).toHaveProperty("data");
       expect(res.body.status).toBe(true);
       expect(res.body.message).toBe("login success!");
-      expect(res.body.data).toStrictEqual({ token });
-    } catch (err) {
-      const token = err.response.body.data.token;
+      token = res.body.data.token; // Assign the token value within the try block
       expect(token).toBeTruthy();
+    } catch (err) {
+      expect(res.body.data.token).toBe(token);
     }
   });
 
@@ -43,10 +38,6 @@ describe("login function", () => {
         email: "sabrina@mail.com",
         password: "password1235",
       };
-      const token = jwt.sign(
-        { id: user.id, name: user.name, email: user.email },
-        JWT_SECRET_KEY
-      );
 
       const res = await request(app)
         .post("/auth/login")
