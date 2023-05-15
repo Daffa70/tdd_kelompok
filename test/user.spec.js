@@ -123,21 +123,19 @@ describe("Test /auth/whoami endpoint", () => {
     }
   });
   //negative case
-  test('fetch user gagal', async() => {
+  test("fetch user gagal", async () => {
     try {
-        const res = await request(app)
-            .get('/auth/whoami')
+      const res = await request(app).get("/auth/whoami");
 
-        expect(res.statusCode).toBe(401);
-        expect(res.body).toHaveProperty("status");
-        expect(res.body).toHaveProperty("massage");
-        expect(res.body).toHaveProperty("data")
-        expect(res.body.status).toBe(false);
-        expect(res.body.massage).toBe("youre not authorized!");
-        expect(res.body.data).toBeNull();
-
+      expect(res.statusCode).toBe(401);
+      expect(res.body).toHaveProperty("status");
+      expect(res.body).toHaveProperty("message");
+      expect(res.body).toHaveProperty("data");
+      expect(res.body.status).toBe(false);
+      expect(res.body.message).toBe("you're not authorized!");
+      expect(res.body.data).toBeNull();
     } catch (err) {
-        expect(error).toBe('error');
+      expect(err).toBe("error");
     }
   });
 });
