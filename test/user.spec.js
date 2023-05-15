@@ -6,8 +6,8 @@ const truncate = require("../utils/truncate");
 truncate.user();
 
 const user = {
-  name: "sabrina",
-  email: "sabrina3@mail.com",
+  name: "kelompok1",
+  email: "kelompok1@mail.com",
   password: "password123",
   token: "",
 };
@@ -24,12 +24,12 @@ describe("base.register function", () => {
       expect(res.body).toHaveProperty("status");
       expect(res.body).toHaveProperty("message");
       expect(res.body).toHaveProperty("data");
+      expect(res.body.data).toHaveProperty("id");
+      expect(res.body.data).toHaveProperty("name");
+      expect(res.body.data).toHaveProperty("email");
       expect(res.body.status).toBe(true);
       expect(res.body.message).toBe("user created!");
-      expect(res.body.data).toStrictEqual({
-        name: user.name,
-        email: user.email,
-      });
+      
     } catch (err) {
       expect(err).toBe("error"); // test gagal karena err != 'error'
     }

@@ -29,6 +29,7 @@ module.exports = {
                 status: true,
                 message: 'user created!',
                 data: {
+                    id: user.id,
                     name: user.name,
                     email: user.email
                 }
