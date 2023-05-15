@@ -5,6 +5,7 @@ module.exports = {
   auth: async (req, res, next) => {
     try {
       const { token } = req.headers;
+      console.log("middleware:", token);
       if (!token) {
         return res.status(401).json({
           status: false,

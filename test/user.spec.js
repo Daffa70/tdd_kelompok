@@ -6,6 +6,7 @@ const truncate = require("../utils/truncate");
 truncate.user();
 
 const user = {
+  id: 1,
   name: "kelompok1",
   email: "kelompok1@mail.com",
   password: "password123",
@@ -104,8 +105,8 @@ describe("Test /auth/whoami endpoint", () => {
   test("Fetch user berhasil : token di provide", async () => {
     try {
       const res = await request(app)
-        .post("/auth/whoami")
-        .set("Authorization", user.token);
+        .get("/auth/whoami")
+        .set("Token", user.token);
 
       console.log(res.body);
 
@@ -114,9 +115,9 @@ describe("Test /auth/whoami endpoint", () => {
       expect(res.body.status).toBe(true);
       expect(res.body.message).toBe("fetch user success!");
       expect(res.body.data).toStrictEqual({
-        id: res.id,
-        name: res.name,
-        email: res.email,
+        id: user.id,
+        name: user.name,
+        email: user.email,
       });
     } catch (err) {
       expect(err).toBe("error"); // test gagal karena err != 'error'
