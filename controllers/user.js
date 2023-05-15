@@ -80,17 +80,18 @@ module.exports = {
     }
   },
 
-  whoami: async (req, res, next) => {
-    try {
-      return res.status(200).json({
-        status: true,
-        message: "success!",
-        data: {
-          user: req.user,
-        },
-      });
-    } catch (err) {
-      next(err);
+    whoami: async (req, res, next) => {
+        try {
+            return res.status(200).json({
+                status: true,
+                message: 'fetch user success!',
+                data: {
+                    user: req.user
+                }
+            });
+        } catch (err) {
+            next(err);
+        }
     }
   },
 };
