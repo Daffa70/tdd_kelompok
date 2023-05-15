@@ -6,6 +6,6 @@ const middlewares = require('../utils/middlewares');
 
 router.post('/register', user.register);
 router.post('/login', user.login);
-router.get('/whoami', middlewares.auth, user.whoami);
+router.get('/auth/whoami', middlewares.auth, user.whoami);
 
 module.exports = router;

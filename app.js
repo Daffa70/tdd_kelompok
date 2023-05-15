@@ -5,13 +5,18 @@ const morgan = require('morgan');
 const router = require('./routes');
 const cors = require('cors');
 
+var indexRouter = require('./routes/index');
+
 const {
-    HTTP_PORT = 3000
+    HTTP_PORT = 4000
 } = process.env;
 
 app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
+
+app.use('/', indexRouter);
 
 app.use(router);
 
@@ -26,3 +31,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(HTTP_PORT, () => console.log('running on port', HTTP_PORT));
+
+module.exports = app;

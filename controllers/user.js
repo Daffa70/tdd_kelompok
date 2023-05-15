@@ -83,7 +83,7 @@ module.exports = {
         try {
             return res.status(200).json({
                 status: true,
-                message: 'success!',
+                message: 'fetch user success!',
                 data: {
                     user: req.user
                 }

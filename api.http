@@ -1,21 +1,21 @@
-POST http://localhost:3000/register
+POST http://localhost:4000/register
 Content-Type: application/json
 
 {
-    "name":"sabrina",
-    "email":"sabrina@mail.com",
+    "name":"tata",
+    "email":"tata@mail.com",
     "password":"password123"
 }
 
 ### 
-POST http://localhost:3000/login
+POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-    "email":"sabrina@mail.com",
+    "email":"tata@mail.com",
     "password":"password123"
 }
 
 ###
-GET http://localhost:3000/whoami
-Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InNhYnJpbmEiLCJlbWFpbCI6InNhYnJpbmFAbWFpbC5jb20iLCJpYXQiOjE2ODI2OTI2MDh9.VneW1WUp6Cupqe2H4zdYwwc18Ows-8OXnjd1nd1vTCY
+GET http://localhost:4000/whoami
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6InRhdGEiLCJlbWFpbCI6InRhdGFAbWFpbC5jb20iLCJpYXQiOjE2ODM3MjkyMTh9.7MoJtDli9siDd_xp0xi36KCjQHiHo2aJsG_eVaxnd1w
