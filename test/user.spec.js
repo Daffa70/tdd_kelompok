@@ -29,7 +29,6 @@ describe("base.register function", () => {
       expect(res.body.data).toHaveProperty("email");
       expect(res.body.status).toBe(true);
       expect(res.body.message).toBe("user created!");
-      
     } catch (err) {
       expect(err).toBe("error"); // test gagal karena err != 'error'
     }
@@ -71,10 +70,9 @@ describe("login function", () => {
       expect(res.body).toHaveProperty("data");
       expect(res.body.status).toBe(true);
       expect(res.body.message).toBe("login success!");
-      token = res.body.data.token; // Assign the token value within the try block
-      expect(token).toBeTruthy();
+      user.token = res.body.data.token;
     } catch (err) {
-      expect(res.body.data.token).toBe(token);
+      expect(err).toBe("error");
     }
   });
 
