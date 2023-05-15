@@ -25,19 +25,18 @@ module.exports = {
         password: hashPassword,
       });
 
-      return res.status(200).json({
-        status: true,
-        message: "user registered!",
-        data: {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-        },
-      });
-    } catch (err) {
-      next(err);
-    }
-  },
+      return res.status(201).json({
+                status: true,
+                message: 'user created!',
+                data: {
+                    name: user.name,
+                    email: user.email
+                }
+            });
+        } catch (err) {
+            next(err);
+        }
+    },
 
   login: async (req, res, next) => {
     try {
