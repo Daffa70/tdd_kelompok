@@ -26,18 +26,18 @@ module.exports = {
       });
 
       return res.status(201).json({
-                status: true,
-                message: 'user created!',
-                data: {
-                    id: user.id,
-                    name: user.name,
-                    email: user.email
-                }
-            });
-        } catch (err) {
-            next(err);
-        }
-    },
+        status: true,
+        message: "user created!",
+        data: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+        },
+      });
+    } catch (err) {
+      next(err);
+    }
+  },
 
   login: async (req, res, next) => {
     try {
@@ -80,18 +80,17 @@ module.exports = {
     }
   },
 
-    whoami: async (req, res, next) => {
-        try {
-            return res.status(200).json({
-                status: true,
-                message: 'fetch user success!',
-                data: {
-                    user: req.user
-                }
-            });
-        } catch (err) {
-            next(err);
-        }
+  whoami: async (req, res, next) => {
+    try {
+      return res.status(200).json({
+        status: true,
+        message: "fetch user success!",
+        data: {
+          user: req.user,
+        },
+      });
+    } catch (err) {
+      next(err);
     }
   },
 };
